@@ -25,14 +25,14 @@ app.set("trust proxy", 1);
 app.use(passport.initialize());
 
 // CORS configuration
-app.use(
-  cors({
-    origin: FRONTEND_URL, // must be exact Vercel URL in production
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Session-ID"],
-  })
-);
+const allowedOrigin = (FRONTEND_URL || "").replace(/\/$/, "");
+
+app.use(cors({
+  origin: allowedOrigin,
+  credentials: true,
+  methods: ['GET','POST','PUT','DELETE','PATCH','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization','X-Session-ID'],
+}));
 
 // Preflight (optional but helpful)
 app.options("*", cors({ origin: FRONTEND_URL, credentials: true }));
