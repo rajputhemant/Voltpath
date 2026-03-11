@@ -69,7 +69,6 @@ const LandingPage = () => {
           </div>
           <span className="font-display text-2xl font-bold dark:text-dark-text text-light-text">VoltPath</span>
         </motion.div>
-
         {/* Main content */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
